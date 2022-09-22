@@ -7,3 +7,5 @@ Exercício luisinho-> ![image](https://user-images.githubusercontent.com/1014849
 vetor elevada ao quadrado -> O usuário alimenta um vetor e em seguida será criado um vetor com os números elevados a potência que o usuário digitou.
 
 Números acima de 100 no vetor -> Diz quantos números acima de 100 em um vetor alimentado pelo usuário.
+
+Números Primos -> Usuário escolhe um número e usando uma função void o programa diz se é ou não primo.
