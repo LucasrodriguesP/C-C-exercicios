@@ -9,3 +9,5 @@ vetor elevada ao quadrado -> O usuário alimenta um vetor e em seguida será cri
 Números acima de 100 no vetor -> Diz quantos números acima de 100 em um vetor alimentado pelo usuário.
 
 Números Primos -> Usuário escolhe um número e usando uma função void o programa diz se é ou não primo.
+
+maior e menor numero digitado num array -> Usuário escolhe o tamanho do array, digita os números que quiser e recebe o maior e o menor respectivamente.
