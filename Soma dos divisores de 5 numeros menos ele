@@ -1,0 +1,24 @@
+#include <stdio.h>
+#include <math.h>
+int SomaDivisores();
+int main(){
+    puts("bem vindo");
+    SomaDivisores();
+    return 0;
+}
+int SomaDivisores(){
+    int numero,soma;
+    numero = 8;
+    soma = 0;
+    for (int y = 1; y<=5; y++){
+        printf("Primeiro numero =  ");
+        scanf("%d",&numero);
+        for (int x = 1; x < numero; x ++){
+            if (numero % x == 0){
+                soma = soma + x;
+            }
+        }
+        printf("a soma eh %d\n",soma);
+        soma = 0;
+    }
+}
