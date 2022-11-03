@@ -1,0 +1,103 @@
+#include <stdio.h>
+#include <stdlib.h>
+
+struct no{
+    int chave;
+    struct no *esquerda;
+    struct no *direita;
+};
+
+struct no *getNovoNo(int val){
+    struct no *novoNo = malloc(sizeof(struct no));
+    novoNo->chave = val;
+    novoNo->esquerda =NULL;
+    novoNo->direita =NULL;
+    return novoNo;
+}
+
+struct no *inserir(struct no *raiz, int val){
+    if(raiz == NULL)
+        return getNovoNo(val);
+    
+    if (raiz->chave <val)
+        raiz->direita = inserir(raiz->direita,val);
+    else if(raiz-> chave > val)
+        raiz->esquerda = inserir(raiz->esquerda,val);
+    
+    return raiz;
+}
+
+void ordena(struct no *raiz){
+    if (raiz == NULL)
+        return;
+    ordena(raiz->esquerda);
+    printf("%d",raiz->chave);
+    ordena(raiz->direita);
+}
+
+int getdireitaMin(struct no *raiz){
+    struct no *temp = raiz;
+    while(temp->esquerda!=NULL){
+        temp = temp->esquerda;
+    }
+    return temp->chave;
+}
+
+struct no *removeNo(struct no *raiz, int val){
+    
+    if (raiz==NULL)
+        return NULL;
+    
+    if (raiz->chave < val)
+        raiz->direita = removeNo(raiz->direita,val);
+    else if (raiz->chave > val)
+        raiz->esquerda = removeNo(raiz->esquerda,val);    
+    else{
+        
+        if (raiz->esquerda == NULL && raiz->direita == NULL){
+            free(raiz);
+            return NULL;
+        }
+        else if(raiz->esquerda == NULL){
+            struct no *temp = raiz->direita;
+            free(raiz);
+            return temp;
+        }
+        else if(raiz->direita == NULL){
+            struct no *temp = raiz->esquerda;
+            free(raiz);
+            return temp;
+        }
+        else{
+            int direitaMin = getdireitaMin(raiz->direita);
+            raiz->chave = direitaMin;
+            raiz->direita = removeNo(raiz->direita,direitaMin);
+        }
+        
+    }    
+    
+    return raiz;
+}
+
+
+
+
+
+
+int main(){
+    struct no *raiz = NULL;
+    raiz = inserir(raiz,100);
+    raiz = inserir(raiz,50);
+    raiz = inserir(raiz,200);
+    raiz = inserir(raiz,300);
+    ordena(raiz);
+    
+    raiz = removeNo(raiz,300);
+    printf("depois de deletar o 300 a arvore vira: \t");
+    ordena(raiz);
+    printf("\n");
+    
+    raiz = removeNo(raiz,100);
+    ordena(raiz);
+    return 0;
+}
