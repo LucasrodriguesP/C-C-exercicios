@@ -1,0 +1,20 @@
+#include <stddef.h>
+#include <stdio.h>
+  
+int ultima_parada(int combustivel,int consumo,int* postos_de_gasolina, size_t size)
+{
+  int postoDistante = 0;
+  int TotalKm = combustivel * consumo;
+  for (size_t x = 0; x <size; x++){
+    if (postos_de_gasolina[x] <= TotalKm){
+      if(postos_de_gasolina[x] > postoDistante){
+        postoDistante = postos_de_gasolina[x];
+      }
+    }
+  } 
+  if (postoDistante == 0){
+          return -1;
+  }
+  printf("%d", postoDistante);
+  return postoDistante;
+}
